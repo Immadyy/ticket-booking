@@ -18,6 +18,6 @@ public class UserBookingService {
     public UserBookingService(User user1) throws IOException {
         this.user = user1;
         File users = new File(USERS_PATH);
-        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {})
+        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {});
     }
 }
