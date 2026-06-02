@@ -3,6 +3,7 @@ package ticket.booking.services;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ticket.booking.entities.User;
+import ticket.booking.util.UserServiceUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,9 +12,9 @@ import java.util.Optional;
 
 public class UserBookingService {
 
-    private User user;
+    private final User user;
     private List<User> userList;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private static final String USERS_FILE_PATH = "app/src/main/java/ticket/booking/localDb/users.json";
 
     public UserBookingService(User user1) throws IOException {
