@@ -1,1 +1,7 @@
-[{"name":"immady","password":"kabutar","hashed_password":"$2a$10$2qzUa4s6P60o/SVTlJa98O4bCUYYg2oWNENgsCAhLotWwXbEsH5Ne","tickets_booked":[],"user_id":"db942a33-d7a2-46f2-b184-c801db0e4667"}]
+[ {
+  "name" : "immady",
+  "password" : "kabutar",
+  "hashed_password" : "$2a$10$QM.K5CvyHnHFajhXUJmckuPycasJn4DIRJB0rmNLMT1aHaMuo27QC",
+  "tickets_booked" : [ ],
+  "user_id" : "c93ae485-ba62-4882-bfff-220bd84f5963"
+} ]
