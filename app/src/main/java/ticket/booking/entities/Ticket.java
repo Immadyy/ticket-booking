@@ -1,18 +1,37 @@
 package ticket.booking.entities;
 
-import java.time.ZonedDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Ticket {
-    private String ticketID;
-    private String userID;
+import java.sql.Date;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
+public class Ticket{
+
+    private String ticketId;
+
+    private String userId;
+
     private String source;
+
     private String destination;
+
     private String dateOfTravel;
+
     private Train train;
 
+    public Ticket(){}
+
     public Ticket(String ticketId, String userId, String source, String destination, String dateOfTravel, Train train){
-        this.ticketID = ticketId;
-        this.userID = userId;
+        this.ticketId = ticketId;
+        this.userId = userId;
         this.source = source;
         this.destination = destination;
         this.dateOfTravel = dateOfTravel;
@@ -20,15 +39,15 @@ public class Ticket {
     }
 
     public String getTicketInfo(){
-        return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s", ticketID, userID, source, destination, dateOfTravel);
+        return String.format("Ticket ID: %s belongs to User %s from %s to %s on %s", ticketId, userId, source, destination, dateOfTravel);
     }
 
     public String getTicketId(){
-        return ticketID;
+        return ticketId;
     }
 
     public void setTicketId(String ticketId){
-        this.ticketID = ticketId;
+        this.ticketId = ticketId;
     }
 
     public String getSource(){
@@ -40,11 +59,11 @@ public class Ticket {
     }
 
     public String getUserId(){
-        return userID;
+        return userId;
     }
 
     public void setUserId(String userId){
-        this.userID = userId;
+        this.userId = userId;
     }
 
     public String getDestination(){

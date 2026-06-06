@@ -1,22 +1,32 @@
 package ticket.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@JsonNaming (PropertyNamingStrategy.SnakeCaseStrategy.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
-    private String userID;
+
     private String name;
     private String password;
     private String hashedPassword;
     private List<Ticket> ticketsBooked;
+    private String userId;
 
-    public User(String userID, String name, String password, String hashedPassword, List<Ticket> ticketsBooked) {
-        this.userID = userID;
+    public User(String name, String password, String hashedPassword, List<Ticket> ticketsBooked, String userId){
         this.name = name;
         this.password = password;
         this.hashedPassword = hashedPassword;
         this.ticketsBooked = ticketsBooked;
+        this.userId = userId;
     }
-
     public User(){}
 
     public String getName() {
@@ -42,7 +52,7 @@ public class User {
     }
 
     public String getUserId() {
-        return userID;
+        return userId;
     }
 
     public void setName(String name) {
@@ -58,6 +68,6 @@ public class User {
     }
 
     public void setUserId(String userId) {
-        this.userID = userId;
+        this.userId = userId;
     }
 }
