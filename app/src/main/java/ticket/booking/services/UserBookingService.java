@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 public class UserBookingService {
 
@@ -52,8 +53,34 @@ public class UserBookingService {
         Optional<User> userFetched = userList.stream().filter(user1 -> {
             return user1.getName().equals(user.getName()) && UserServiceUtil.checkPassword(user.getPassword(), user1.getHashedPassword());
         }).findFirst();
-        if (userFetched.isPresent()) {
-            userFetched.get().printTickets();
+        userFetched.ifPresent(User::printTickets);
+    }
+
+    public Boolean cancelBooking(String ticketID){
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter the ticket id to cancel");
+        ticketID = s.next();
+
+        if (ticketID == null || ticketID.isEmpty()){
+            System.out.println("Ticket ID cannot be null or empty.");
+            return Boolean.FALSE;
+        }
+
+        if (user.getTicketsBooked() == null){
+            System.out.println("User has no booked tickets");
+            return Boolean.FALSE;
+        }
+
+        String finalTicketID = ticketID;
+        Boolean removed = user.getTicketsBooked().removeIf(ticket ->
+                (ticket.getTicketId() != null) && ticket.getTicketId().equals(finalTicketID));
+
+        if (removed) {
+            System.out.println("Ticket with ID " + ticketID + " has been canceled.");
+            return Boolean.TRUE;
+        }else{
+            System.out.println("No ticket found with ID " + ticketID);
+            return Boolean.FALSE;
         }
     }
 }
